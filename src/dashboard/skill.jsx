@@ -1,0 +1,35 @@
+import { Code2, Globe, Zap, FileCode, Palette, Package, ArrowUpRight } from 'lucide-react'
+
+const skills = [
+  { name: 'React.js', category: 'Frontend architecture', percentage: 90, icon: Code2, tags: ['Hooks', 'Components', 'State'] },
+  { name: 'JavaScript', category: 'Language & logic', percentage: 88, icon: Zap, tags: ['ES6+', 'Async', 'APIs'] },
+  { name: 'HTML', category: 'Semantic structure', percentage: 95, icon: Globe, tags: ['A11y', 'SEO', 'Forms'] },
+  { name: 'CSS', category: 'Visual systems', percentage: 92, icon: Palette, tags: ['Responsive', 'Motion', 'Layouts'] },
+  { name: 'WordPress', category: 'Content platforms', percentage: 80, icon: FileCode, tags: ['Themes', 'CMS', 'Plugins'] },
+  { name: 'Drupal', category: 'Enterprise CMS', percentage: 75, icon: Package, tags: ['Modules', 'Templates', 'Views'] },
+]
+
+export default function Skills() {
+  return (
+    <section className="section-grid relative min-h-screen overflow-hidden bg-[#101412] px-6 pb-24 pt-24 text-[#f4f7f2] md:pt-32">
+      <div className="pointer-events-none absolute right-[-12%] top-16 h-80 w-80 rounded-full bg-[#c9f36c]/10 blur-[120px]" />
+      <div className="relative z-10 mx-auto max-w-6xl">
+        <div className="reveal mb-16 flex flex-col justify-between gap-8 border-b border-[#dcffbc]/10 pb-10 md:flex-row md:items-end">
+          <div><h1 className="max-w-3xl text-4xl font-bold tracking-tight md:text-6xl">Tools I use to build <em className="font-serif font-normal text-[#c9f36c]">better.</em></h1></div>
+          <p className="max-w-xs text-sm leading-6 text-[#91a096]">A practical toolkit shaped by shipping real products, not just collecting badges.</p>
+        </div>
+        <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+          {skills.map(({ name, category, percentage, icon: Icon, tags }, index) => (
+            <article key={name} className={`professional-panel reveal reveal-delay-${(index % 3) + 1} group rounded-2xl p-6 transition duration-300 hover:-translate-y-1 hover:border-[#c9f36c]/40`}>
+              <div className="mb-10 flex items-start justify-between"><div className="flex h-11 w-11 items-center justify-center rounded-xl bg-[#c9f36c] text-[#101412]"><Icon size={20} /></div><ArrowUpRight size={18} className="text-[#91a096] transition group-hover:-translate-y-1 group-hover:translate-x-1 group-hover:text-[#c9f36c]" /></div>
+              <p className="mb-2 text-xs font-bold uppercase tracking-[.18em] text-[#91a096]">{category}</p>
+              <div className="mb-5 flex items-end justify-between gap-3"><h2 className="text-2xl font-bold">{name}</h2><span className="text-sm font-bold text-[#c9f36c]">{percentage}%</span></div>
+              <div className="mb-5 h-1.5 overflow-hidden rounded-full bg-[#354038]"><div className="h-full rounded-full bg-[#c9f36c] transition-all duration-1000 group-hover:bg-white" style={{ width: `${percentage}%` }} /></div>
+              <div className="flex flex-wrap gap-2">{tags.map((tag) => <span key={tag} className="rounded-md border border-[#dcffbc]/10 px-2 py-1 text-[11px] text-[#91a096]">{tag}</span>)}</div>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+  )
+}
