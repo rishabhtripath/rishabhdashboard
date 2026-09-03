@@ -34,9 +34,28 @@ const projects = [
   },
 ]
 
-const fujifilmSites = Array.from({ length: 12 }, (_, index) => ({
+const fujifilmUrls = [
+  'https://www.fujifilm.com/fbkr/ko',
+  'https://www.fujifilm.com/fbau',
+  'https://www.fujifilm.com/fbca',
+  'https://www.fujifilm.com/fbcn',
+  'https://www.fujifilm.com/fbhk',
+  'https://www.fujifilm.com/fbhk/zh-hk',
+  'https://www.fujifilm.com/fbmm',
+  'https://www.fujifilm.com/fbmy',
+  'https://www.fujifilm.com/fbnz',
+  'https://www.fujifilm.com/fbph',
+  'https://www.fujifilm.com/fbsg',
+  'https://www.fujifilm.com/fbth',
+  'https://www.fujifilm.com/fbtw',
+  'https://www.fujifilm.com/fbtw/zh-tw',
+  'https://www.fujifilm.com/fbvn',
+  'https://www.fujifilm.com/fbvn/vi',
+]
+
+const fujifilmSites = fujifilmUrls.map((url, index) => ({
   name: `Fujifilm iLive website ${index + 1}`,
-  url: `https://example.com/fujifilm-ilive-${index + 1}`,
+  url,
 }))
 
 export function FujifilmSites({ onBack }) {
@@ -45,9 +64,9 @@ export function FujifilmSites({ onBack }) {
       <div className="mx-auto max-w-5xl">
         <button onClick={onBack} className="mb-12 inline-flex items-center gap-2 text-sm font-bold text-[#91a096] transition hover:text-[#c9f36c]"><ArrowLeft size={16} /> Back to projects</button>
         <div className="reveal mb-12 border-b border-[#dcffbc]/10 pb-10">
-          <p className="mb-4 text-xs font-bold uppercase tracking-[.28em] text-[#c9f36c]">Fujifilm iLive 12 / Website collection</p>
+          <p className="mb-4 text-xs font-bold uppercase tracking-[.28em] text-[#c9f36c]">Fujifilm iLive {fujifilmSites.length} / Website collection</p>
           <h1 className="max-w-3xl text-4xl font-bold tracking-tight md:text-6xl">Fujifilm <em className="font-serif font-normal text-[#c9f36c]">iLive.</em></h1>
-          <p className="mt-6 max-w-2xl text-base leading-7 text-[#91a096]">The 12 Fujifilm iLive website URLs are listed below. Dummy URLs are currently in place and can be replaced with the final links later.</p>
+          <p className="mt-6 max-w-2xl text-base leading-7 text-[#91a096]">All {fujifilmSites.length} Fujifilm iLive website URLs are listed below.</p>
         </div>
         <div className="grid gap-3 md:grid-cols-2">
           {fujifilmSites.map((site, index) => (
