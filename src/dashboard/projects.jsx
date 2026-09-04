@@ -4,9 +4,11 @@ const projects = [
   {
     number: '01',
     title: 'Fujifilm Website',
-    description: 'A live digital experience for Fujifilm, designed with a clear content structure and a polished, responsive interface For the 12 different countries.',
+    description: 'A live digital experience for Fujifilm, designed with a clear content structure and a polished, responsive interface For the 16 different countries.',
     type: 'Live website',
     accent: 'fujifilm',
+    brandUrl: 'https://asset.fujifilm.com/www/in/files/2021-03/f311886a76f1c93272fa181656346f34/logo_06.jpg',
+    imageUrl: 'https://asset.fujifilm.com/www/in/files/2021-03/f311886a76f1c93272fa181656346f34/logo_06.jpg',
   },
   {
     number: '02',
@@ -95,10 +97,12 @@ export default function Projects({ onNavigate }) {
         <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-4">
           {projects.map((project, index) => (
             <article key={project.title} className={`professional-panel reveal reveal-delay-${index + 1} group overflow-hidden rounded-2xl transition duration-300 hover:-translate-y-1 hover:border-[#c9f36c]/40`}>
-              <div className={`project-preview project-preview-${project.accent}`}>
-                <span>{project.number}</span>
-                <LayoutTemplate size={30} strokeWidth={1.4} />
-              </div>
+              <a href={project.brandUrl} target="_blank" rel="noreferrer" aria-label="View Fujifilm brand logo page">
+                <div className={`project-preview project-preview-${project.accent}`} style={project.imageUrl ? { backgroundImage: `url("${project.imageUrl}")` } : undefined}>
+                  <span>{project.number}</span>
+                  <LayoutTemplate size={30} strokeWidth={1.4} />
+                </div>
+              </a>
               <div className="p-6">
                 <div className="mb-5 flex items-center justify-between gap-3"><span className="text-xs font-bold uppercase tracking-[.16em] text-[#c9f36c]">{project.type}</span><ArrowUpRight size={18} className="text-[#91a096] transition group-hover:-translate-y-1 group-hover:translate-x-1 group-hover:text-[#c9f36c]" /></div>
                 <h2 className="mb-3 text-2xl font-bold">{project.title}</h2>
