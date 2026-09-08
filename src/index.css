@@ -43,10 +43,6 @@ button { cursor: pointer; }
 .project-preview::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(255,255,255,.08), rgba(16,20,18,.08)); pointer-events: none; }
 .project-preview > * { position: relative; z-index: 1; }
 .project-preview span { align-self: flex-start; font-size: .75rem; font-weight: 800; letter-spacing: .16em; }
-.project-preview-fujifilm { background-image: url('/project-fujifilm.svg'); }
-.project-preview-techcomp { background-image: url('/project-techcomp.svg'); }
-.project-preview-ecovilt { background-image: url('/project-ecovolt.svg'); }
-.project-preview-shikhafab { background-image: url('/project-shikhafab.svg'); }
 
 @keyframes page-in { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 @keyframes reveal-up { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }

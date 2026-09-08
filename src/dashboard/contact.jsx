@@ -1,7 +1,7 @@
 import { useState } from "react";
-import emailjs from "@emailjs/browser";
 import {
   Mail,
+  Phone,
   Globe,
   Code2,
   MessageCircle,
@@ -9,6 +9,9 @@ import {
 } from "lucide-react";
 
 export default function Contact() {
+  const phoneNumber = "7007254304";
+  const whatsappNumber = "917007254304";
+
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -32,28 +35,14 @@ export default function Contact() {
     setLoading(true);
     setStatus("");
 
-    try {
-      await emailjs.send(
-        "YOUR_SERVICE_ID",
-        "YOUR_TEMPLATE_ID",
-        formData,
-        "YOUR_PUBLIC_KEY"
-      );
+    const whatsappMessage = [
+      `Hello Rishabh, my name is ${formData.name}.`,
+      `Email: ${formData.email}`,
+      `Subject: ${formData.subject || "Hiring opportunity"}`,
+      `Message: ${formData.message}`,
+    ].join("\n");
 
-      setStatus("Message sent successfully!");
-
-      setFormData({
-        name: "",
-        email: "",
-        subject: "",
-        message: "",
-      });
-    } catch (error) {
-      setStatus("Failed to send message.");
-      console.error(error);
-    }
-
-    setLoading(false);
+    window.location.href = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`;
   };
 
   return (
@@ -104,6 +93,20 @@ export default function Contact() {
                 </p>
               </div>
             </div>
+
+            <a
+              href={`tel:${phoneNumber}`}
+              className="mb-10 flex items-center gap-4 rounded-xl border border-[#dcffbc]/10 bg-[#151b17] p-4 transition hover:border-[#c9f36c]"
+            >
+              <div className="rounded-xl bg-[#c9f36c] p-3">
+                <Phone className="text-[#101412]" />
+              </div>
+
+              <div>
+                <p className="text-sm text-[#91a096]">Phone</p>
+                <p className="font-medium text-white">{phoneNumber}</p>
+              </div>
+            </a>
 
               <p className="mb-5 text-xs font-bold uppercase tracking-[.18em] text-[#91a096]">
               FIND ME ON

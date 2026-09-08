@@ -1,4 +1,4 @@
-import { ArrowLeft, ArrowUpRight, ExternalLink, LayoutTemplate } from 'lucide-react'
+import { ArrowLeft, ArrowUpRight, ExternalLink } from 'lucide-react'
 
 const projects = [
   {
@@ -17,6 +17,7 @@ const projects = [
     type: 'Live website',
     accent: 'techcomp',
     url: 'https://techcomp.in/',
+    imageUrl: 'https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1200&q=80',
   },
   {
     number: '03',
@@ -25,6 +26,7 @@ const projects = [
     type: 'Brand website',
     accent: 'ecovilt',
     url: 'https://bharatecovolt.com',
+    imageUrl: 'https://images.unsplash.com/photo-1509391366360-2e959784a276?auto=format&fit=crop&w=1200&q=80',
   },
   {
     number: '04',
@@ -33,6 +35,7 @@ const projects = [
     type: 'Brand website',
     accent: 'shikhafab',
     url: 'https://shikhafab.com',
+    imageUrl: 'https://images.unsplash.com/photo-1445205170230-053b83016050?auto=format&fit=crop&w=1200&q=80',
   },
 ]
 
@@ -97,10 +100,9 @@ export default function Projects({ onNavigate }) {
         <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-4">
           {projects.map((project, index) => (
             <article key={project.title} className={`professional-panel reveal reveal-delay-${index + 1} group overflow-hidden rounded-2xl transition duration-300 hover:-translate-y-1 hover:border-[#c9f36c]/40`}>
-              <a href={project.brandUrl} target="_blank" rel="noreferrer" aria-label="View Fujifilm brand logo page">
+              <a href={project.brandUrl || project.url} target="_blank" rel="noreferrer" aria-label={`View ${project.title}`}>
                 <div className={`project-preview project-preview-${project.accent}`} style={project.imageUrl ? { backgroundImage: `url("${project.imageUrl}")` } : undefined}>
                   <span>{project.number}</span>
-                  <LayoutTemplate size={30} strokeWidth={1.4} />
                 </div>
               </a>
               <div className="p-6">
