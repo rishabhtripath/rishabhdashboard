@@ -9,7 +9,7 @@ export function FujifilmSites({ onBack }) {
         <div className="reveal mb-12 border-b border-[#dcffbc]/10 pb-10">
           <p className="mb-4 text-xs font-bold uppercase tracking-[.28em] text-[#c9f36c]">Fujifilm iLive {fujifilmSites.length} / Website collection</p>
           <h1 className="max-w-3xl text-4xl font-bold tracking-tight md:text-6xl">Fujifilm <em className="font-serif font-normal text-[#c9f36c]">iLive.</em></h1>
-          <p className="mt-6 max-w-2xl text-base leading-7 text-[#91a096]">All {fujifilmSites.length} Fujifilm iLive website URLs are listed below.</p>
+          <p className="mt-6 max-w-2xl text-base leading-7 text-[#91a096]">This project includes {fujifilmSites.length} live, country-specific Fujifilm iLive websites. Select any country below to open its live URL.</p>
         </div>
         <div className="grid gap-3 md:grid-cols-2">
           {fujifilmSites.map((site, index) => (
@@ -38,17 +38,25 @@ export default function Projects({ onNavigate }) {
         <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-4">
           {projects.map((project, index) => (
             <article key={project.title} className={`professional-panel reveal reveal-delay-${index + 1} group overflow-hidden rounded-2xl transition duration-300 hover:-translate-y-1 hover:border-[#c9f36c]/40`}>
-              <a href={project.brandUrl || project.url} target="_blank" rel="noreferrer" aria-label={`View ${project.title}`}>
-                <div className={`project-preview project-preview-${project.accent}`} style={project.imageUrl ? { backgroundImage: `url("${project.imageUrl}")` } : undefined}>
-                  <span>{project.number}</span>
-                </div>
-              </a>
+              {project.number === '01' ? (
+                <button onClick={() => onNavigate('FujifilmSites')} className="project-preview-link" aria-label={`Explore all ${fujifilmSites.length} Fujifilm websites`}>
+                  <div className={`project-preview project-preview-${project.accent}`} style={project.imageUrl ? { backgroundImage: `url("${project.imageUrl}")` } : undefined}>
+                    <span>{project.number}</span><span className="project-preview-action">{fujifilmSites.length} live sites <ArrowUpRight size={15} /></span>
+                  </div>
+                </button>
+              ) : (
+                <a href={project.brandUrl || project.url} target="_blank" rel="noreferrer" aria-label={`View ${project.title}`}>
+                  <div className={`project-preview project-preview-${project.accent}`} style={project.imageUrl ? { backgroundImage: `url("${project.imageUrl}")` } : undefined}>
+                    <span>{project.number}</span>
+                  </div>
+                </a>
+              )}
               <div className="p-6">
                 <div className="mb-5 flex items-center justify-between gap-3"><span className="text-xs font-bold uppercase tracking-[.16em] text-[#c9f36c]">{project.type}</span><ArrowUpRight size={18} className="text-[#91a096] transition group-hover:-translate-y-1 group-hover:translate-x-1 group-hover:text-[#c9f36c]" /></div>
                 <h2 className="mb-3 text-2xl font-bold">{project.title}</h2>
                 <p className="mb-7 text-sm leading-7 text-[#91a096]">{project.description}</p>
                 {project.number === '01' ? (
-                  <button onClick={() => onNavigate('FujifilmSites')} className="inline-flex items-center gap-2 text-sm font-bold text-[#f4f7f2] transition hover:text-[#c9f36c]">View project <ExternalLink size={15} /></button>
+                  <button onClick={() => onNavigate('FujifilmSites')} className="inline-flex items-center gap-2 text-sm font-bold text-[#f4f7f2] transition hover:text-[#c9f36c]">Explore all {fujifilmSites.length} websites <ExternalLink size={15} /></button>
                 ) : (
                   <a href={project.url} target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 text-sm font-bold text-[#f4f7f2] transition hover:text-[#c9f36c]">View project <ExternalLink size={15} /></a>
                 )}

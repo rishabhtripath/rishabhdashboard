@@ -2,8 +2,8 @@ export const projects = [
   {
     number: '01',
     title: 'Fujifilm Website',
-    description: 'A live digital experience for Fujifilm, designed with a clear content structure and a polished, responsive interface for 16 different countries.',
-    type: 'Live website',
+    description: 'A live digital experience for Fujifilm, delivered across 16 country-specific websites with a consistent, responsive interface.',
+    type: '16 live regional websites',
     accent: 'fujifilm',
     brandUrl: 'https://asset.fujifilm.com/www/in/files/2021-03/f311886a76f1c93272fa181656346f34/logo_06.jpg',
     imageUrl: 'https://asset.fujifilm.com/www/in/files/2021-03/f311886a76f1c93272fa181656346f34/logo_06.jpg',

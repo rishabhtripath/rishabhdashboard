@@ -64,9 +64,12 @@ button { cursor: pointer; }
 .skill-card-dots i:nth-child(3) { opacity: 1; }
 .skill-card:hover .skill-card-dots i { transform: translateY(-2px); opacity: 1; }
 .project-preview { position: relative; display: flex; height: 190px; align-items: center; justify-content: space-between; padding: 24px; color: #101412; background-position: center; background-size: cover; overflow: hidden; }
+.project-preview-link { display: block; width: 100%; padding: 0; border: 0; color: inherit; background: transparent; text-align: left; }
 .project-preview::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(255,255,255,.08), rgba(16,20,18,.08)); pointer-events: none; }
 .project-preview > * { position: relative; z-index: 1; }
 .project-preview span { align-self: flex-start; font-size: .75rem; font-weight: 800; letter-spacing: .16em; }
+.project-preview-action { display: inline-flex; align-items: center; gap: 5px; align-self: flex-end !important; padding: 7px 10px; border: 1px solid rgba(16,20,18,.3); border-radius: 999px; background: rgba(244,247,242,.82); font-size: .62rem !important; letter-spacing: .08em !important; text-transform: uppercase; transition: transform .25s ease, background .25s ease; }
+.project-preview-link:hover .project-preview-action { transform: translateY(-3px); background: #c9f36c; }
 
 @keyframes page-in { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 @keyframes reveal-up { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
