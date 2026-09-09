@@ -26,7 +26,7 @@ export default function Home({ onNavigate }) {
       <div className="pointer-events-none absolute -right-24 top-16 h-96 w-96 rounded-full bg-[#c9f36c]/10 blur-[130px]" />
       <div className="pointer-events-none absolute bottom-0 left-0 h-72 w-72 rounded-full bg-[#8ee3d4]/5 blur-[100px]" />
 
-      <section className="relative z-10 mx-auto flex min-h-[calc(100vh-76px)] max-w-6xl items-center px-6 py-20">
+      <section className="relative z-10 mx-auto grid min-h-[calc(100vh-76px)] max-w-6xl items-center gap-14 px-6 py-20 lg:grid-cols-[1.12fr_.78fr] lg:gap-16">
         <div className="max-w-4xl">
         <div className="reveal mb-8 inline-flex items-center gap-2 rounded-full border border-[#dcffbc]/15 bg-[#1b221d] px-4 py-2 text-xs font-bold uppercase tracking-[.16em] text-[#c9f36c]">
           <Sparkles size={14} /> Available for new opportunities
@@ -47,6 +47,17 @@ export default function Home({ onNavigate }) {
           </button>
         </div>
         </div>
+        <figure className="profile-hero reveal reveal-delay-2">
+          <div className="profile-hero-frame">
+            <img src="/profile.jpg" alt="Rishabh Tripathi, frontend developer" />
+            <div className="profile-hero-shine" />
+            <span className="profile-hero-label">Rishabh Tripathi / 01</span>
+          </div>
+          <figcaption className="profile-hero-caption">
+            <span>Frontend engineer</span>
+            <span>Lucknow, India</span>
+          </figcaption>
+        </figure>
       </section>
     </div>
   );
