@@ -2,11 +2,9 @@ import { useState } from "react";
 import {
   Mail,
   Phone,
-  Globe,
-  Code2,
-  MessageCircle,
   Send,
 } from "lucide-react";
+import { FaGithub, FaLinkedinIn, FaWhatsapp } from "react-icons/fa";
 
 export default function Contact() {
   const phoneNumber = "7007254304";
@@ -114,24 +112,33 @@ export default function Contact() {
 
             <div className="flex gap-4">
               <a
-                href="#"
-                className="rounded-xl border border-[#dcffbc]/10 p-3 text-[#91a096] transition hover:border-[#c9f36c] hover:text-[#c9f36c]"
+                href="https://www.linkedin.com/in/rishabh-tripathi-30519920b/"
+                target="_blank"
+                rel="noreferrer"
+                aria-label="Visit Rishabh Tripathi on LinkedIn"
+                className="social-link social-link-linkedin rounded-xl border border-[#dcffbc]/10 p-3 transition"
               >
-                <Globe />
+                <FaLinkedinIn aria-hidden="true" />
               </a>
 
               <a
-                href="#"
-                className="rounded-xl border border-[#dcffbc]/10 p-3 text-[#91a096] transition hover:border-[#c9f36c] hover:text-[#c9f36c]"
+                href="https://github.com/rishabhtripath"
+                target="_blank"
+                rel="noreferrer"
+                aria-label="Visit Rishabh Tripathi on GitHub"
+                className="social-link social-link-github rounded-xl border border-[#dcffbc]/10 p-3 transition"
               >
-                <Code2 />
+                <FaGithub aria-hidden="true" />
               </a>
 
               <a
-                href="#"
-                className="rounded-xl border border-[#dcffbc]/10 p-3 text-[#91a096] transition hover:border-[#c9f36c] hover:text-[#c9f36c]"
+                href={`https://wa.me/${whatsappNumber}`}
+                target="_blank"
+                rel="noreferrer"
+                aria-label="Chat with Rishabh Tripathi on WhatsApp"
+                className="social-link social-link-whatsapp rounded-xl border border-[#dcffbc]/10 p-3 transition"
               >
-                <MessageCircle />
+                <FaWhatsapp aria-hidden="true" />
               </a>
             </div>
           </div>

@@ -36,7 +36,7 @@ export default function Home({ onNavigate }) {
           I turn complex ideas into <span className="typed-word text-[.58em] text-[#c9f36c]">{words[wordIndex].slice(0, visibleLetters)}<span className="typing-cursor" aria-hidden="true">|</span></span>
         </h1>
         <p className="reveal reveal-delay-2 mt-8 max-w-2xl text-lg leading-8 text-[#91a096] md:text-xl">
-          I am Rishabh Tripathi, a frontend developer who combines thoughtful design, clean code, and purposeful motion to make digital products feel effortless.
+          Software Engineer specializing in React.js, JavaScript, Drupal and modern responsive web experiences.
         </p>
         <div className="reveal reveal-delay-3 mt-10 flex flex-col gap-4 sm:flex-row">
           <button onClick={() => onNavigate('Projects')} className="group inline-flex items-center justify-center gap-2 rounded-full bg-[#c9f36c] px-6 py-3 font-bold text-[#101412] transition hover:-translate-y-1">
@@ -45,6 +45,12 @@ export default function Home({ onNavigate }) {
           <button onClick={() => onNavigate('Contact')} className="inline-flex items-center justify-center gap-2 rounded-full border border-[#dcffbc]/20 px-6 py-3 font-bold text-[#f4f7f2] transition hover:border-[#c9f36c] hover:text-[#c9f36c]">
             <Mail size={17} /> Start a conversation
           </button>
+        </div>
+        <div className="reveal reveal-delay-3 home-proof mt-12">
+          <div><strong>1.6+</strong><span>Years Experience</span></div>
+          <div><strong>16</strong><span>Live Websites</span></div>
+          <div><strong>4+</strong><span>Projects</span></div>
+          <p>React <b>•</b> Drupal <b>•</b> JavaScript <b>•</b> HTML <b>•</b> CSS <b>•</b> WordPress</p>
         </div>
         </div>
         <figure className="profile-hero reveal reveal-delay-2">

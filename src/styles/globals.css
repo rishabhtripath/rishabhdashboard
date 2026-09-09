@@ -50,6 +50,20 @@ button { cursor: pointer; }
 .profile-hero-label { position: absolute; left: 18px; bottom: 18px; color: #f4f7f2; font-size: .68rem; font-weight: 800; letter-spacing: .14em; text-transform: uppercase; }
 .profile-hero-caption { display: flex; justify-content: space-between; gap: 14px; padding: 18px 2px 0; color: #91a096; font-size: .72rem; font-weight: 700; letter-spacing: .13em; text-transform: uppercase; }
 .profile-hero-caption span:last-child { color: #c9f36c; text-align: right; }
+.home-proof { display: flex; flex-wrap: wrap; align-items: center; gap: 20px 28px; padding-top: 20px; border-top: 1px solid rgba(220,255,188,.12); }
+.home-proof div { display: flex; flex-direction: column; gap: 3px; }
+.home-proof strong { color: #f4f7f2; font-size: 1.25rem; line-height: 1; }
+.home-proof span, .home-proof p { color: #91a096; font-size: .68rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; }
+.home-proof p { margin: 0 0 0 auto; color: #c9f36c; }
+.home-proof b { color: #91a096; padding: 0 4px; }
+.social-link { display: inline-flex; width: 52px; height: 52px; align-items: center; justify-content: center; font-size: 1.55rem; }
+.social-link-linkedin { color: #0a66c2; }
+.social-link-github { color: #f4f7f2; }
+.social-link-whatsapp { color: #25d366; }
+.social-link:hover { transform: translateY(-3px); }
+.social-link-linkedin:hover { border-color: #0a66c2; color: #4d9de0; background: rgba(10,102,194,.1); }
+.social-link-github:hover { border-color: #f4f7f2; color: #ffffff; background: rgba(244,247,242,.1); }
+.social-link-whatsapp:hover { border-color: #25d366; color: #5ee890; background: rgba(37,211,102,.1); }
 
 .section-grid { background-image: linear-gradient(rgba(201,243,108,.035) 1px, transparent 1px), linear-gradient(90deg, rgba(201,243,108,.035) 1px, transparent 1px); background-size: 48px 48px; }
 .reveal { opacity: 0; transform: translateY(28px) scale(.985); }
@@ -98,6 +112,8 @@ button { cursor: pointer; }
 	.profile-hero { width: min(100%, 330px); order: -1; }
 	.profile-hero-frame { transform: rotate(1.5deg); }
 	.profile-hero-caption { font-size: .62rem; }
+	.home-proof { align-items: flex-start; gap: 18px; }
+	.home-proof p { width: 100%; margin: 2px 0 0; }
 	.featured-project { display: block; }
 	.featured-project-visual, .featured-project-visual .project-preview { min-height: 250px; }
 	.featured-project-content { padding: 26px; }
