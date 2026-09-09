@@ -1,21 +1,11 @@
 import { useEffect, useState } from 'react'
-import { Menu, X, ArrowUpRight } from 'lucide-react'
-import './App.css'
-import Home from './dashboard/Home'
-import About from './dashboard/about'
-import Experience from './dashboard/experiance'
-import Skills from './dashboard/skill'
-import Contact from './dashboard/contact'
-import Projects, { FujifilmSites } from './dashboard/projects'
-
-const navItems = [
-  { label: 'Home', page: 'Home' },
-  { label: 'Projects', page: 'Projects' },
-  { label: 'About', page: 'About' },
-  { label: 'Experience', page: 'Experience' },
-  { label: 'Skills', page: 'Skills' },
-  { label: 'Contact', page: 'Contact' },
-]
+import SiteHeader from './components/layout/SiteHeader'
+import About from './sections/AboutSection'
+import Contact from './sections/ContactSection'
+import Experience from './sections/ExperienceSection'
+import Home from './sections/HomeSection'
+import Projects, { FujifilmSites } from './sections/ProjectsSection'
+import Skills from './sections/SkillsSection'
 
 function App() {
   const [activePage, setActivePage] = useState('Home')
@@ -32,54 +22,12 @@ function App() {
 
   return (
     <div className="app-shell">
-      <header className="site-header">
-        <div className="nav-wrap">
-          <button className="brand-mark" onClick={() => handleNavigation('Home')} aria-label="Go to home">
-            RT<span>.</span>
-          </button>
-
-          <nav className="desktop-nav" aria-label="Primary navigation">
-            {navItems.map((item) => (
-              <button
-                key={item.page}
-                className={activePage === item.page ? 'active' : ''}
-                onClick={() => handleNavigation(item.page)}
-              >
-                {item.label}
-              </button>
-            ))}
-          </nav>
-
-          <div className="nav-actions">
-            <button className="talk-button" onClick={() => handleNavigation('Contact')}>
-              Let's talk <ArrowUpRight size={15} />
-            </button>
-            <button
-              className="menu-button"
-              onClick={() => setMenuOpen((open) => !open)}
-              aria-label="Toggle navigation menu"
-            >
-              {menuOpen ? <X size={24} /> : <Menu size={24} />}
-            </button>
-          </div>
-        </div>
-
-        {menuOpen && (
-          <div className="mobile-nav">
-            <div className="mobile-nav-list">
-              {navItems.map((item) => (
-                <button
-                  key={item.page}
-                  className={activePage === item.page ? 'active' : ''}
-                  onClick={() => handleNavigation(item.page)}
-                >
-                  {item.label}
-                </button>
-              ))}
-            </div>
-          </div>
-        )}
-      </header>
+      <SiteHeader
+        activePage={activePage}
+        menuOpen={menuOpen}
+        onNavigate={handleNavigation}
+        onToggleMenu={() => setMenuOpen((open) => !open)}
+      />
 
       <main className="page-transition" key={activePage}>
       {activePage === 'About' ? (
