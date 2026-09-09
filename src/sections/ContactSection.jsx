@@ -112,7 +112,7 @@ export default function Contact() {
 
             <div className="flex gap-4">
               <a
-                href="https://www.linkedin.com/in/rishabh-tripathi-30519920b/"
+                href="https://www.linkedin.com/in/dev-rishabh-tripathi/"
                 target="_blank"
                 rel="noreferrer"
                 aria-label="Visit Rishabh Tripathi on LinkedIn"
