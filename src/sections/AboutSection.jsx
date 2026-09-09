@@ -15,7 +15,7 @@ export default function About() {
     {
       icon: <Clock3 size={22} />,
       title: "EXPERIENCE",
-      value: "1.5 Years",
+      value: "1.6 Years",
     },
     {
       icon: <Globe size={22} />,
