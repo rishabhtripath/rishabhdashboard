@@ -33,6 +33,8 @@ button { cursor: pointer; }
 .nav-actions { display: flex; align-items: center; gap: 15px; }
 .talk-button { display: inline-flex; align-items: center; gap: 7px; border: 1px solid #c9f36c; border-radius: 999px; padding: 10px 16px; color: #101412; background: #c9f36c; font-size: .8rem; font-weight: 800; transition: transform .2s ease, box-shadow .2s ease; }
 .talk-button:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(201,243,108,.2); }
+.resume-button { display: inline-flex; align-items: center; gap: 7px; border: 1px solid rgba(220,255,188,.2); border-radius: 999px; padding: 10px 15px; color: #f4f7f2; background: rgba(27,34,29,.72); font-size: .8rem; font-weight: 800; text-decoration: none; transition: transform .2s ease, border-color .2s ease, color .2s ease; }
+.resume-button:hover { transform: translateY(-2px); border-color: #c9f36c; color: #c9f36c; }
 .menu-button { display: none; border: 0; color: #f4f7f2; background: transparent; }
 .mobile-nav { display: none; }
 .page-transition { position: relative; z-index: 1; animation: page-in .55s ease both; }
@@ -65,6 +67,17 @@ button { cursor: pointer; }
 .skill-card:hover .skill-card-dots i { transform: translateY(-2px); opacity: 1; }
 .project-preview { position: relative; display: flex; height: 190px; align-items: center; justify-content: space-between; padding: 24px; color: #101412; background-position: center; background-size: cover; overflow: hidden; }
 .project-preview-link { display: block; width: 100%; padding: 0; border: 0; color: inherit; background: transparent; text-align: left; }
+.featured-project { display: grid; grid-template-columns: minmax(0, 1.08fr) minmax(320px, .92fr); margin-bottom: 28px; background: linear-gradient(110deg, rgba(27,34,29,.92), rgba(22,31,25,.72)); }
+.featured-project-visual { min-height: 360px; }
+.featured-project-visual .project-preview { height: 100%; min-height: 360px; }
+.featured-project-number { font-size: 1rem !important; color: #f4f7f2; }
+.featured-project-content { display: flex; flex-direction: column; justify-content: space-between; gap: 36px; padding: clamp(28px, 5vw, 56px); }
+.featured-project-kicker, .featured-project-count { color: #c9f36c; font-size: .68rem; font-weight: 800; letter-spacing: .16em; text-transform: uppercase; }
+.featured-project-count { color: #91a096; }
+.featured-project-cta { align-self: flex-start; padding: 12px 18px; border-radius: 999px; background: #c9f36c; transition: transform .25s ease, box-shadow .25s ease; }
+.featured-project-cta:hover { transform: translateY(-3px); box-shadow: 0 10px 28px rgba(201,243,108,.18); }
+.projects-secondary-heading { display: flex; justify-content: space-between; gap: 20px; margin: 44px 0 18px; color: #91a096; font-size: .68rem; font-weight: 800; letter-spacing: .18em; text-transform: uppercase; }
+.projects-secondary-heading span:first-child { color: #f4f7f2; }
 .project-preview::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(255,255,255,.08), rgba(16,20,18,.08)); pointer-events: none; }
 .project-preview > * { position: relative; z-index: 1; }
 .project-preview span { align-self: flex-start; font-size: .75rem; font-weight: 800; letter-spacing: .16em; }
@@ -81,9 +94,14 @@ button { cursor: pointer; }
 	.mobile-nav { display: block; border-top: 1px solid rgba(220,255,188,.1); padding: 12px 20px 18px; background: #151b17; }
 	.mobile-nav-list { display: flex; flex-direction: column; gap: 4px; }
 	.mobile-nav button { padding: 12px; text-align: left; }
+	.mobile-resume-link { display: inline-flex; align-items: center; justify-content: space-between; margin: 4px 12px 8px; padding: 12px; border: 1px solid rgba(220,255,188,.16); border-radius: 10px; color: #c9f36c; font-size: .78rem; font-weight: 800; letter-spacing: .08em; text-decoration: none; text-transform: uppercase; }
 	.profile-hero { width: min(100%, 330px); order: -1; }
 	.profile-hero-frame { transform: rotate(1.5deg); }
 	.profile-hero-caption { font-size: .62rem; }
+	.featured-project { display: block; }
+	.featured-project-visual, .featured-project-visual .project-preview { min-height: 250px; }
+	.featured-project-content { padding: 26px; }
+	.projects-secondary-heading { align-items: flex-start; flex-direction: column; gap: 8px; }
 }
 @media (prefers-reduced-motion: reduce) {
 	*, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; scroll-behavior: auto !important; }

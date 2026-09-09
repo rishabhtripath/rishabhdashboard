@@ -1,4 +1,4 @@
-import { ArrowUpRight, Menu, X } from 'lucide-react'
+import { ArrowUpRight, Download, Menu, X } from 'lucide-react'
 import { navItems } from '../../config/navigation'
 
 export default function SiteHeader({ activePage, menuOpen, onNavigate, onToggleMenu }) {
@@ -25,6 +25,9 @@ export default function SiteHeader({ activePage, menuOpen, onNavigate, onToggleM
           <button className="talk-button" onClick={() => onNavigate('Contact')}>
             Let's talk <ArrowUpRight size={15} />
           </button>
+          <a className="resume-button" href="/Rishabh_Tripathi_Resume.pdf" target="_blank" rel="noreferrer" aria-label="Open resume">
+            Resume <Download size={15} />
+          </a>
           <button
             className="menu-button"
             onClick={onToggleMenu}
@@ -39,6 +42,9 @@ export default function SiteHeader({ activePage, menuOpen, onNavigate, onToggleM
       {menuOpen && (
         <div className="mobile-nav">
           <div className="mobile-nav-list">
+            <a className="mobile-resume-link" href="/Rishabh_Tripathi_Resume.pdf" target="_blank" rel="noreferrer">
+              Resume <Download size={15} />
+            </a>
             {navItems.map((item) => (
               <button
                 key={item.page}
