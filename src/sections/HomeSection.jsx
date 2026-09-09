@@ -54,7 +54,7 @@ export default function Home({ onNavigate }) {
             <span className="profile-hero-label">Rishabh Tripathi / 01</span>
           </div>
           <figcaption className="profile-hero-caption">
-            <span>Frontend engineer</span>
+            <span>Software Engineer</span>
             <span>Lucknow, India</span>
           </figcaption>
         </figure>

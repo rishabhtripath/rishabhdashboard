@@ -46,9 +46,6 @@ export default function About() {
         <div className="grid gap-8 lg:grid-cols-[420px_1fr]">
           {/* Left Card */}
           <div className="professional-panel reveal reveal-delay-1 rounded-2xl p-8">
-            <div className="about-portrait mb-8">
-              <img src="/profile.jpg" alt="Portrait of Rishabh Tripathi" />
-            </div>
             <div className="mb-6 text-5xl font-bold text-[#c9f36c]">RT<span className="text-[#f4f7f2]">.</span></div>
 
             <h3 className="mb-6 text-4xl font-bold text-white">
