@@ -9,15 +9,35 @@ import Projects, { FujifilmSites } from './sections/ProjectsSection'
 import Skills from './sections/SkillsSection'
 
 const ThreeScene = lazy(() => import('./components/visuals/ThreeScene'))
+const validPages = new Set(['Home', 'Projects', 'About', 'Experience', 'Skills', 'Contact', 'FujifilmSites'])
+
+const getPageFromHash = () => {
+  const hashPage = window.location.hash.slice(1).toLowerCase()
+  const page = [...validPages].find((candidate) => candidate.toLowerCase() === hashPage)
+  return page || 'Home'
+}
 
 function App() {
-  const [activePage, setActivePage] = useState('Home')
+  const [activePage, setActivePage] = useState(getPageFromHash)
   const [menuOpen, setMenuOpen] = useState(false)
 
   const handleNavigation = (page) => {
     setActivePage(page)
     setMenuOpen(false)
+    const nextHash = page === 'Home' ? '' : `#${page.toLowerCase()}`
+    window.history.pushState({}, '', `${window.location.pathname}${nextHash}`)
   }
+
+  useEffect(() => {
+    const syncPageFromUrl = () => setActivePage(getPageFromHash())
+    window.addEventListener('hashchange', syncPageFromUrl)
+    window.addEventListener('popstate', syncPageFromUrl)
+
+    return () => {
+      window.removeEventListener('hashchange', syncPageFromUrl)
+      window.removeEventListener('popstate', syncPageFromUrl)
+    }
+  }, [])
 
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'smooth' })
