@@ -53,6 +53,12 @@ export default function Projects({ onNavigate }) {
               </div>
               <h2 className="mb-4 text-3xl font-bold md:text-5xl">{featuredProject.title}</h2>
               <p className="max-w-2xl text-base leading-8 text-[#91a096]">{featuredProject.description} Explore the complete country-wise collection to see every live regional URL.</p>
+              <div className="project-tech-stack" aria-label={`${featuredProject.title} technology stack`}>
+                <span className="project-tech-label">Tech stack</span>
+                <div className="project-tech-list">
+                  {featuredProject.techStack.map((technology) => <span key={technology}>{technology}</span>)}
+                </div>
+              </div>
             </div>
             <button onClick={() => onNavigate('FujifilmSites')} className="featured-project-cta inline-flex items-center gap-2 text-sm font-bold text-[#101412]">Explore all {fujifilmSites.length} websites <ExternalLink size={15} /></button>
           </div>
@@ -75,6 +81,12 @@ export default function Projects({ onNavigate }) {
                 <div className="mb-5 flex items-center justify-between gap-3"><span className="text-xs font-bold uppercase tracking-[.16em] text-[#c9f36c]">{project.type}</span><ArrowUpRight size={18} className="text-[#91a096] transition group-hover:-translate-y-1 group-hover:translate-x-1 group-hover:text-[#c9f36c]" /></div>
                 <h2 className="mb-3 text-2xl font-bold">{project.title}</h2>
                 <p className="mb-7 text-sm leading-7 text-[#91a096]">{project.description}</p>
+                <div className="project-tech-stack project-tech-stack-secondary" aria-label={`${project.title} technology stack`}>
+                  <span className="project-tech-label">Tech stack</span>
+                  <div className="project-tech-list">
+                    {project.techStack.map((technology) => <span key={technology}>{technology}</span>)}
+                  </div>
+                </div>
                 <a href={project.url} target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 text-sm font-bold text-[#f4f7f2] transition hover:text-[#c9f36c]">View project <ExternalLink size={15} /></a>
               </div>
             </article>

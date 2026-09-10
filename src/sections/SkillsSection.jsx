@@ -11,13 +11,13 @@ export default function Skills() {
           <p className="max-w-xs text-sm leading-6 text-[#91a096]">A practical toolkit shaped by shipping real products, not just collecting badges.</p>
         </div>
         <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-          {skills.map(({ name, category, icon: Icon, tags }, index) => (
+          {skills.map(({ name, category, icon: Icon, items }, index) => (
             <article key={name} className={`skill-card professional-panel reveal reveal-delay-${(index % 3) + 1} group rounded-2xl p-6 transition duration-300 hover:-translate-y-1 hover:border-[#c9f36c]/40`}>
               <div className="skill-card-top mb-10 flex items-start justify-between"><div className="flex h-11 w-11 items-center justify-center rounded-xl bg-[#c9f36c] text-[#101412]"><Icon size={20} /></div><ArrowUpRight size={18} className="text-[#91a096] transition group-hover:-translate-y-1 group-hover:translate-x-1 group-hover:text-[#c9f36c]" /></div>
               <p className="mb-2 text-xs font-bold uppercase tracking-[.18em] text-[#91a096]">{category}</p>
               <h2 className="mb-7 text-2xl font-bold">{name}</h2>
-              <div className="skill-card-footer"><span className="skill-card-label">Skill set</span><span className="skill-card-dots" aria-hidden="true"><i /><i /><i /></span></div>
-              <div className="flex flex-wrap gap-2">{tags.map((tag) => <span key={tag} className="rounded-md border border-[#dcffbc]/10 px-2 py-1 text-[11px] text-[#91a096]">{tag}</span>)}</div>
+              <div className="skill-card-footer"><span className="skill-card-label">Core skills</span><span className="skill-card-dots" aria-hidden="true"><i /><i /><i /></span></div>
+              <div className="skill-card-items" aria-label={`${name} skills`}>{items.map((item) => <span key={item}>{item}</span>)}</div>
             </article>
           ))}
         </div>

@@ -3,6 +3,14 @@ import { Mail, ArrowRight, Sparkles } from "lucide-react";
 
 const words = ["interfaces.", "experiences.", "products."];
 
+const buildSteps = [
+  { number: '01', title: 'Understand', description: 'Requirements aur business goals samajhta hoon.' },
+  { number: '02', title: 'Plan', description: 'Structure, components aur technical approach define karta hoon.' },
+  { number: '03', title: 'Build', description: 'Clean, responsive and maintainable interfaces develop karta hoon.' },
+  { number: '04', title: 'Test', description: 'Responsive behaviour, functionality aur browser compatibility verify karta hoon.' },
+  { number: '05', title: 'Deliver', description: 'Client feedback ke according refine karke production-ready solution deliver karta hoon.' },
+];
+
 export default function Home({ onNavigate }) {
   const [wordIndex, setWordIndex] = useState(0);
   const [visibleLetters, setVisibleLetters] = useState(0);
@@ -76,6 +84,25 @@ export default function Home({ onNavigate }) {
             <span>Lucknow, India</span>
           </figcaption>
         </figure>
+      </section>
+      <section className="how-i-build section-grid" aria-labelledby="how-i-build-heading">
+        <div className="how-i-build-inner">
+          <div className="how-i-build-heading reveal">
+            <p className="how-i-build-kicker">My process</p>
+            <h2 id="how-i-build-heading">How I <em>build.</em></h2>
+            <p>Thoughtful decisions at every stage, from the first conversation to the final release.</p>
+          </div>
+          <div className="how-i-build-steps">
+            {buildSteps.map((step, index) => (
+              <article key={step.number} className={`how-i-build-step reveal reveal-delay-${(index % 3) + 1}`}>
+                <span className="how-i-build-number">{step.number}</span>
+                <div className="how-i-build-line" aria-hidden="true" />
+                <h3>{step.title}</h3>
+                <p>{step.description}</p>
+              </article>
+            ))}
+          </div>
+        </div>
       </section>
     </div>
   );
