@@ -1,7 +1,19 @@
+import { useEffect } from 'react'
 import { ArrowUpRight, Download, Menu, X } from 'lucide-react'
 import { navItems } from '../../config/navigation'
 
 export default function SiteHeader({ activePage, menuOpen, onNavigate, onToggleMenu }) {
+  useEffect(() => {
+    if (!menuOpen) return undefined
+
+    const closeOnEscape = (event) => {
+      if (event.key === 'Escape') onToggleMenu()
+    }
+
+    document.addEventListener('keydown', closeOnEscape)
+    return () => document.removeEventListener('keydown', closeOnEscape)
+  }, [menuOpen, onToggleMenu])
+
   return (
     <header className="site-header">
       <div className="nav-wrap">
@@ -14,6 +26,7 @@ export default function SiteHeader({ activePage, menuOpen, onNavigate, onToggleM
             <button
               key={item.page}
               className={activePage === item.page ? 'active' : ''}
+              aria-current={activePage === item.page ? 'page' : undefined}
               onClick={() => onNavigate(item.page)}
             >
               {item.label}
@@ -33,6 +46,7 @@ export default function SiteHeader({ activePage, menuOpen, onNavigate, onToggleM
             onClick={onToggleMenu}
             aria-label={menuOpen ? 'Close navigation menu' : 'Open navigation menu'}
             aria-expanded={menuOpen}
+            aria-controls="mobile-navigation"
           >
             {menuOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
@@ -40,7 +54,7 @@ export default function SiteHeader({ activePage, menuOpen, onNavigate, onToggleM
       </div>
 
       {menuOpen && (
-        <div className="mobile-nav">
+        <nav id="mobile-navigation" className="mobile-nav" aria-label="Mobile navigation">
           <div className="mobile-nav-list">
             <a className="mobile-resume-link" href="/Rishabh_Tripathi_Resume.pdf" target="_blank" rel="noreferrer">
               Resume <Download size={15} />
@@ -49,13 +63,14 @@ export default function SiteHeader({ activePage, menuOpen, onNavigate, onToggleM
               <button
                 key={item.page}
                 className={activePage === item.page ? 'active' : ''}
+                aria-current={activePage === item.page ? 'page' : undefined}
                 onClick={() => onNavigate(item.page)}
               >
                 {item.label}
               </button>
             ))}
           </div>
-        </div>
+        </nav>
       )}
     </header>
   )

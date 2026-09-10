@@ -1,9 +1,5 @@
 import { useState } from "react";
-import {
-  Mail,
-  Phone,
-  Send,
-} from "lucide-react";
+import { Mail, Phone, Send } from "lucide-react";
 import { FaGithub, FaLinkedinIn, FaWhatsapp } from "react-icons/fa";
 
 export default function Contact() {
@@ -17,7 +13,6 @@ export default function Contact() {
     message: "",
   });
 
-  const [loading, setLoading] = useState(false);
   const [status, setStatus] = useState("");
 
   const handleChange = (e) => {
@@ -30,9 +25,6 @@ export default function Contact() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    setLoading(true);
-    setStatus("");
-
     const whatsappMessage = [
       `Hello Rishabh, my name is ${formData.name}.`,
       `Email: ${formData.email}`,
@@ -40,12 +32,15 @@ export default function Contact() {
       `Message: ${formData.message}`,
     ].join("\n");
 
-    window.location.href = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`;
+    const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`;
+    window.open(whatsappUrl, "_blank", "noopener,noreferrer");
+    setStatus("WhatsApp opened with your message ready to send.");
   };
 
   return (
     <section
       id="contact"
+      aria-labelledby="contact-heading"
       className="section-grid relative overflow-hidden bg-[#101412] px-6 py-24 text-[#f4f7f2] md:py-32"
     >
       {/* Background Glow */}
@@ -54,7 +49,7 @@ export default function Contact() {
       <div className="relative z-10 mx-auto max-w-6xl">
         {/* Heading */}
         <div className="reveal mb-16 border-b border-[#dcffbc]/10 pb-10">
-          <h2 className="mb-6 text-4xl font-bold tracking-tight md:text-6xl">
+          <h2 id="contact-heading" className="mb-6 text-4xl font-bold tracking-tight md:text-6xl">
             Let’s build something <em className="font-serif font-normal text-[#c9f36c]">useful.</em>
           </h2>
 
@@ -76,7 +71,7 @@ export default function Contact() {
               and a good conversation.
             </p>
 
-            <div className="mb-10 flex items-center gap-4 rounded-xl border border-[#dcffbc]/10 bg-[#151b17] p-4">
+            <a href="mailto:rt28082002@gmail.com" className="mb-10 flex items-center gap-4 rounded-xl border border-[#dcffbc]/10 bg-[#151b17] p-4 transition hover:border-[#c9f36c]">
               <div className="rounded-xl bg-[#c9f36c] p-3">
                 <Mail className="text-[#101412]" />
               </div>
@@ -90,7 +85,7 @@ export default function Contact() {
                   rt28082002@gmail.com
                 </p>
               </div>
-            </div>
+            </a>
 
             <a
               href={`tel:${phoneNumber}`}
@@ -215,15 +210,14 @@ export default function Contact() {
 
             <button
               type="submit"
-              disabled={loading}
               className="mt-8 flex items-center gap-3 rounded-full bg-[#c9f36c] px-7 py-3 font-bold text-[#101412] transition hover:-translate-y-1"
             >
-              {loading ? "Sending..." : "Send Message"}
+              Continue in WhatsApp
               <Send size={18} />
             </button>
 
             {status && (
-              <p className="mt-4 text-cyan-400">
+              <p className="mt-4 text-sm text-[#c9f36c]" role="status">
                 {status}
               </p>
             )}

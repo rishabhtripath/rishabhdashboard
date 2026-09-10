@@ -46,18 +46,30 @@ export default function Home({ onNavigate }) {
             <Mail size={17} /> Start a conversation
           </button>
         </div>
-        <div className="reveal reveal-delay-3 home-proof mt-12">
-          <div><strong>1.6+</strong><span>Years Experience</span></div>
-          <div><strong>16</strong><span>Live Websites</span></div>
-          <div><strong>4+</strong><span>Projects</span></div>
-          <p>React <b>•</b> Drupal <b>•</b> JavaScript <b>•</b> HTML <b>•</b> CSS <b>•</b> WordPress</p>
+        <div className="reveal reveal-delay-3 home-proof mt-12" aria-label="Professional highlights">
+          <div className="home-proof-stat">
+            <strong>1.6<span>+</span></strong>
+            <span>Years experience</span>
+          </div>
+          <div className="home-proof-stat">
+            <strong>16</strong>
+            <span>Live websites</span>
+          </div>
+          <div className="home-proof-stat">
+            <strong>4<span>+</span></strong>
+            <span>Selected projects</span>
+          </div>
+          <div className="home-proof-stack">
+            <span className="home-proof-stack-label">Working with</span>
+            <p><b>React</b><b>Drupal</b><b>JavaScript</b><b>HTML</b><b>CSS</b><b>WordPress</b></p>
+          </div>
         </div>
         </div>
         <figure className="profile-hero reveal reveal-delay-2">
           <div className="profile-hero-frame">
             <img src="/profile.jpg" alt="Rishabh Tripathi, frontend developer" />
             <div className="profile-hero-shine" />
-            <span className="profile-hero-label">Rishabh Tripathi / 01</span>
+            <span className="profile-hero-label">Rishabh Tripathi</span>
           </div>
           <figcaption className="profile-hero-caption">
             <span>Software Engineer</span>
