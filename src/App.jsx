@@ -1,4 +1,4 @@
-import { lazy, Suspense, useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import SiteHeader from './components/layout/SiteHeader'
 import ScrollMotion from './components/visuals/ScrollMotion'
 import About from './sections/AboutSection'
@@ -8,7 +8,6 @@ import Home from './sections/HomeSection'
 import Projects, { FujifilmSites } from './sections/ProjectsSection'
 import Skills from './sections/SkillsSection'
 
-const ThreeScene = lazy(() => import('./components/visuals/ThreeScene'))
 const validPages = new Set(['Home', 'Projects', 'About', 'Experience', 'Skills', 'Contact', 'FujifilmSites'])
 
 const getPageFromHash = () => {
@@ -46,9 +45,6 @@ function App() {
   return (
     <div className="app-shell">
       <ScrollMotion pageKey={activePage} />
-      <Suspense fallback={null}>
-        <ThreeScene />
-      </Suspense>
       <SiteHeader
         activePage={activePage}
         menuOpen={menuOpen}
