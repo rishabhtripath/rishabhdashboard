@@ -19,12 +19,12 @@ import {
 
 const PARTICLE_COUNT = 900
 
-function createParticleField() {
-  const positions = new Float32Array(PARTICLE_COUNT * 3)
-  const colors = new Float32Array(PARTICLE_COUNT * 3)
+function createParticleField(particleCount) {
+  const positions = new Float32Array(particleCount * 3)
+  const colors = new Float32Array(particleCount * 3)
   const color = new Color()
 
-  for (let index = 0; index < PARTICLE_COUNT; index += 1) {
+  for (let index = 0; index < particleCount; index += 1) {
     const radius = 2.5 + Math.random() * 7
     const angle = Math.random() * Math.PI * 2
     const height = (Math.random() - 0.5) * 5
@@ -62,8 +62,9 @@ export default function ThreeScene() {
   useEffect(() => {
     const mount = mountRef.current
     const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    const isSmallScreen = window.matchMedia('(max-width: 767px), (pointer: coarse)').matches
 
-    if (!mount || reducedMotion) return undefined
+    if (!mount || reducedMotion || isSmallScreen) return undefined
 
     const scene = new Scene()
     const camera = new PerspectiveCamera(42, 1, 0.1, 100)
@@ -81,7 +82,9 @@ export default function ThreeScene() {
       return undefined
     }
 
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.5))
+    const isLowPowerDevice = navigator.hardwareConcurrency <= 4 || navigator.deviceMemory <= 4
+    const particleCount = isLowPowerDevice ? 450 : PARTICLE_COUNT
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, isLowPowerDevice ? 1 : 1.35))
     renderer.setClearColor(0x000000, 0)
     mount.appendChild(renderer.domElement)
 
@@ -94,7 +97,7 @@ export default function ThreeScene() {
       new IcosahedronGeometry(1.98, 2),
       new MeshBasicMaterial({ color: 0x8ee3d4, wireframe: true, transparent: true, opacity: 0.055 }),
     )
-    const particles = createParticleField()
+    const particles = createParticleField(particleCount)
 
     group.add(core, halo, particles)
     group.rotation.x = 0.35
@@ -117,6 +120,10 @@ export default function ThreeScene() {
     }
 
     const animate = () => {
+      if (document.hidden) {
+        frameId = requestAnimationFrame(animate)
+        return
+      }
       const elapsed = clock.getElapsedTime()
       targetRotation.x += (pointer.y * 0.18 - targetRotation.x) * 0.035
       targetRotation.y += (pointer.x * 0.24 - targetRotation.y) * 0.035
