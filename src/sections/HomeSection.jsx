@@ -4,11 +4,11 @@ import { Mail, ArrowRight, Sparkles } from "lucide-react";
 const words = ["interfaces.", "experiences.", "products."];
 
 const buildSteps = [
-  { number: '01', title: 'Understand', description: 'Requirements aur business goals samajhta hoon.' },
-  { number: '02', title: 'Plan', description: 'Structure, components aur technical approach define karta hoon.' },
-  { number: '03', title: 'Build', description: 'Clean, responsive and maintainable interfaces develop karta hoon.' },
-  { number: '04', title: 'Test', description: 'Responsive behaviour, functionality aur browser compatibility verify karta hoon.' },
-  { number: '05', title: 'Deliver', description: 'Client feedback ke according refine karke production-ready solution deliver karta hoon.' },
+  { number: '01', title: 'Understand', description: 'Goals, audience and requirements are mapped clearly.' },
+  { number: '02', title: 'Plan', description: 'Content flow, structure and UI decisions are laid out early.' },
+  { number: '03', title: 'Build', description: 'Responsive interfaces are crafted with clean reusable components.' },
+  { number: '04', title: 'Refine', description: 'Cross-device testing and fixes are handled before launch.' },
+  { number: '05', title: 'Deliver', description: 'Final updates are shipped with client feedback in mind.' },
 ];
 
 export default function Home({ onNavigate }) {
