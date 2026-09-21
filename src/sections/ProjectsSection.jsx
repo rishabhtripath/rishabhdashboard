@@ -40,7 +40,8 @@ export default function Projects({ onNavigate }) {
 
         <article className="featured-project professional-panel reveal reveal-delay-1 group overflow-hidden rounded-2xl transition duration-300 hover:border-[#c9f36c]/40">
           <button onClick={() => onNavigate('FujifilmSites')} className="featured-project-visual project-preview-link" aria-label={`Explore all ${fujifilmSites.length} Fujifilm websites`}>
-            <div className="project-preview project-preview-fujifilm" style={{ backgroundImage: `url("${featuredProject.imageUrl}")` }}>
+            <div className="project-preview project-preview-fujifilm">
+              <img src={featuredProject.imageUrl} alt="Fujifilm website preview" />
               <span className="featured-project-number">{featuredProject.number}</span>
               <span className="project-preview-action">Explore collection <ArrowUpRight size={15} /></span>
             </div>
