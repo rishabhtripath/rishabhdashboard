@@ -1,10 +1,16 @@
+import emailjs from "@emailjs/browser";
 import { useState } from "react";
 import { Mail, Phone, Send } from "lucide-react";
 import { FaGithub, FaLinkedinIn, FaWhatsapp } from "react-icons/fa";
 
+const EMAIL_SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID || "";
+const EMAIL_TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID || "";
+const EMAIL_PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY || "";
+
 export default function Contact() {
   const phoneNumber = "7007254304";
   const whatsappNumber = "917007254304";
+  const recruiterEmail = "rt28082002@gmail.com";
 
   const [formData, setFormData] = useState({
     name: "",
@@ -22,9 +28,7 @@ export default function Contact() {
     });
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-
+  const handleWhatsApp = () => {
     const whatsappMessage = [
       `Hello Rishabh, my name is ${formData.name}.`,
       `Email: ${formData.email}`,
@@ -35,6 +39,50 @@ export default function Contact() {
     const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`;
     window.open(whatsappUrl, "_blank", "noopener,noreferrer");
     setStatus("WhatsApp opened with your message ready to send.");
+  };
+
+  const openMailClient = () => {
+    const subject = encodeURIComponent(formData.subject || "New contact request");
+    const body = encodeURIComponent(
+      `Hi Rishabh,\n\nName: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`
+    );
+
+    window.location.href = `mailto:${recruiterEmail}?subject=${subject}&body=${body}`;
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    if (!EMAIL_SERVICE_ID || !EMAIL_TEMPLATE_ID || !EMAIL_PUBLIC_KEY) {
+      openMailClient();
+      setStatus("Your email app opened with a ready-to-send message.");
+      return;
+    }
+
+    try {
+      const templateParams = {
+        from_name: formData.name,
+        from_email: formData.email,
+        subject: formData.subject || "New contact request",
+        message: formData.message,
+      };
+
+      await emailjs.send(EMAIL_SERVICE_ID, EMAIL_TEMPLATE_ID, templateParams, {
+        publicKey: EMAIL_PUBLIC_KEY,
+      });
+
+      setStatus("Email sent successfully.");
+      setFormData({
+        name: "",
+        email: "",
+        subject: "",
+        message: "",
+      });
+    } catch (error) {
+      console.error("EmailJS send failed:", error);
+      openMailClient();
+      setStatus("EmailJS failed. Your email app opened with a ready-to-send message.");
+    }
   };
 
   return (
@@ -71,7 +119,7 @@ export default function Contact() {
               and a good conversation.
             </p>
 
-            <a href="mailto:rt28082002@gmail.com" className="mb-10 flex items-center gap-4 rounded-xl border border-[#dcffbc]/10 bg-[#151b17] p-4 transition hover:border-[#c9f36c]">
+            <a href={`mailto:${recruiterEmail}`} className="mb-10 flex items-center gap-4 rounded-xl border border-[#dcffbc]/10 bg-[#151b17] p-4 transition hover:border-[#c9f36c]">
               <div className="rounded-xl bg-[#c9f36c] p-3">
                 <Mail className="text-[#101412]" />
               </div>
@@ -82,7 +130,7 @@ export default function Contact() {
                 </p>
 
                 <p className="font-medium text-white">
-                  rt28082002@gmail.com
+                  {recruiterEmail}
                 </p>
               </div>
             </a>
@@ -208,13 +256,18 @@ export default function Contact() {
               />
             </div>
 
-            <button
-              type="submit"
-              className="mt-8 flex items-center gap-3 rounded-full bg-[#c9f36c] px-7 py-3 font-bold text-[#101412] transition hover:-translate-y-1"
-            >
-              Continue in WhatsApp
-              <Send size={18} />
-            </button>
+            <div className="mt-8 flex items-center justify-start">
+              <button
+                type="button"
+                onClick={handleWhatsApp}
+                className="inline-flex items-center gap-3 rounded-xl border border-[#dcffbc]/10 bg-[#151b17] px-4 py-3 text-sm font-medium text-[#f4f7f2] transition hover:border-[#c9f36c] hover:text-white"
+              >
+                <span className="flex h-9 w-9 items-center justify-center rounded-lg bg-[#c9f36c] text-[#101412]">
+                  <FaWhatsapp className="text-base" />
+                </span>
+                <span>Chat on WhatsApp</span>
+              </button>
+            </div>
 
             {status && (
               <p className="mt-4 text-sm text-[#c9f36c]" role="status">
