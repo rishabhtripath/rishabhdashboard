@@ -99,6 +99,15 @@ button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visib
 .experience-overview-stats div + div { border-left: 1px solid rgba(220,255,188,.12); }
 .experience-overview-stats strong { color: #c9f36c; font-size: 1.65rem; line-height: 1; }
 .experience-overview-stats span { margin-top: 9px; color: #91a096; font-size: .65rem; font-weight: 800; letter-spacing: .08em; line-height: 1.4; text-transform: uppercase; }
+.experience-learning { max-width: 980px; margin: 0 auto 52px; }
+.experience-learning-header { display: flex; flex-wrap: wrap; align-items: end; justify-content: space-between; gap: 16px; margin-bottom: 18px; }
+.experience-learning-header h3 { margin: 0; color: #f4f7f2; font-size: clamp(1.5rem, 2.2vw, 2.2rem); line-height: 1.2; }
+.experience-learning-grid { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 14px; }
+.learning-card { position: relative; display: flex; flex-direction: column; gap: 12px; min-height: 184px; padding: 18px 16px 16px; border: 1px solid rgba(220,255,188,.14); border-radius: 18px; background: linear-gradient(180deg, rgba(27,34,29,.9), rgba(16,20,18,.82)); box-shadow: 0 18px 42px rgba(0,0,0,.14); transition: transform .22s ease, border-color .22s ease, box-shadow .22s ease; }
+.learning-card:hover { transform: translateY(-4px); border-color: rgba(201,243,108,.4); box-shadow: 0 20px 46px rgba(0,0,0,.18); }
+.learning-card-badge { display: inline-flex; width: 42px; height: 42px; align-items: center; justify-content: center; border: 1px solid rgba(201,243,108,.3); border-radius: 12px; color: #c9f36c; background: rgba(201,243,108,.08); font-size: .62rem; font-weight: 800; letter-spacing: .1em; }
+.learning-card h4 { margin: 0; color: #f4f7f2; font-size: 1.05rem; line-height: 1.2; }
+.learning-card p { margin: 0; color: #91a096; font-size: .82rem; line-height: 1.7; }
 .experience-timeline { position: relative; max-width: 980px; margin: 0 auto; }
 .experience-timeline::before { content: ''; position: absolute; left: 31px; top: 30px; bottom: 30px; width: 1px; background: linear-gradient(180deg, rgba(201,243,108,.8), rgba(201,243,108,.16)); }
 .experience-entry { position: relative; display: grid; grid-template-columns: 64px minmax(0, 1fr); gap: 24px; padding-bottom: 30px; }
@@ -117,7 +126,9 @@ button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visib
 .beyond-code-heading h3 { display: none; }
 .beyond-code-content p { display: none; }
 .beyond-code-points { display: none; }
-.skill-card { min-height: 310px; background-image: radial-gradient(circle at 100% 0, rgba(201,243,108,.08), transparent 34%); }
+.skills-grid { margin-top: 8px; }
+.skill-card { min-height: 310px; border: 1px solid rgba(220,255,188,.12); background: linear-gradient(180deg, rgba(27,34,29,.94), rgba(17,21,20,.9)); box-shadow: 0 18px 50px rgba(0,0,0,.14); background-image: radial-gradient(circle at 100% 0, rgba(201,243,108,.08), transparent 32%); border-radius: 20px; }
+.skill-card:hover { border-color: rgba(201,243,108,.38); transform: translateY(-3px); box-shadow: 0 22px 56px rgba(0,0,0,.18); }
 .skill-card-top { min-height: 44px; }
 .skill-card-footer { display: flex; align-items: center; justify-content: space-between; margin-bottom: 18px; padding-top: 14px; border-top: 1px solid rgba(220,255,188,.1); }
 .skill-card-label { color: #c9f36c; font-size: .65rem; font-weight: 800; letter-spacing: .18em; text-transform: uppercase; }
@@ -129,6 +140,15 @@ button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visib
 .skill-card-items { display: flex; flex-wrap: wrap; gap: 9px; }
 .skill-card-items span { display: inline-flex; align-items: center; min-height: 34px; padding: 7px 11px; border: 1px solid rgba(201,243,108,.22); border-radius: 7px; color: #f4f7f2; background: rgba(201,243,108,.06); font-size: .78rem; font-weight: 700; }
 .skill-card:hover .skill-card-items span { border-color: rgba(201,243,108,.4); }
+.learning-panel { margin-top: 30px; padding: 24px; border: 1px solid rgba(220,255,188,.12); border-radius: 22px; background: linear-gradient(180deg, rgba(21,27,23,.95), rgba(13,17,15,.88)); box-shadow: 0 18px 40px rgba(0,0,0,.14); }
+.learning-panel-header { display: flex; flex-wrap: wrap; align-items: end; justify-content: space-between; gap: 14px; margin-bottom: 18px; }
+.learning-panel-header h3 { margin: 0; color: #f4f7f2; font-size: clamp(1.5rem, 2.2vw, 2.2rem); line-height: 1.2; }
+.learning-list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
+.learning-item { display: flex; align-items: flex-start; gap: 14px; padding: 16px 18px; border: 1px solid rgba(201,243,108,.18); border-radius: 16px; background: rgba(201,243,108,.04); }
+.learning-item-badge { display: inline-flex; width: 42px; height: 42px; flex-shrink: 0; align-items: center; justify-content: center; border: 1px solid rgba(201,243,108,.35); border-radius: 12px; color: #c9f36c; background: rgba(201,243,108,.08); font-size: .62rem; font-weight: 800; letter-spacing: .1em; }
+.learning-item-copy { min-width: 0; }
+.learning-item-copy h4 { margin: 0 0 6px; color: #f4f7f2; font-size: 1.04rem; }
+.learning-item-copy p { margin: 0; color: #91a096; font-size: .83rem; line-height: 1.65; }
 .project-preview { position: relative; display: flex; height: 190px; align-items: center; justify-content: space-between; padding: 24px; color: #101412; background-position: center; background-size: cover; overflow: hidden; }
 .project-preview img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center; }
 .project-preview-link { display: block; width: 100%; padding: 0; border: 0; color: inherit; background: transparent; text-align: left; }
@@ -184,6 +204,9 @@ button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visib
 	.experience-overview-stats div { padding: 0 10px; }
 	.experience-overview-stats div:first-child { padding-left: 0; }
 	.experience-overview-stats div:last-child { padding-right: 0; }
+	.learning-panel { padding: 18px; }
+	.learning-list { grid-template-columns: 1fr; }
+	.learning-item { padding: 14px 16px; }
 	.experience-timeline::before { left: 25px; top: 24px; bottom: 24px; }
 	.experience-entry { grid-template-columns: 52px minmax(0, 1fr); gap: 20px; }
 	.experience-entry-marker { width: 52px; height: 52px; font-size: .62rem; }

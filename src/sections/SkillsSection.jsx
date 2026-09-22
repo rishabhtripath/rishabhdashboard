@@ -1,6 +1,13 @@
 import { ArrowUpRight } from 'lucide-react'
 import { skills } from '../data/skills'
 
+const learningTracks = [
+  { name: 'TypeScript', note: 'Writing safer, scalable frontend logic.' },
+  { name: 'Next.js', note: 'Learning routing, data fetching, and app structure.' },
+  { name: 'Advanced React', note: 'Improving patterns, hooks, and component design.' },
+  { name: 'Node.js', note: 'Building a stronger backend understanding.' },
+]
+
 export default function Skills() {
   return (
     <section className="section-grid relative min-h-screen overflow-hidden bg-[#101412] px-6 pb-24 pt-24 text-[#f4f7f2] md:pt-32">
@@ -10,9 +17,10 @@ export default function Skills() {
           <div><h1 className="max-w-3xl text-4xl font-bold tracking-tight md:text-6xl">Tools I use to build <em className="font-serif font-normal text-[#c9f36c]">better.</em></h1></div>
           <p className="max-w-xs text-sm leading-6 text-[#91a096]">A practical toolkit shaped by shipping real products, not just collecting badges.</p>
         </div>
-        <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+
+        <div className="skills-grid grid gap-4 md:grid-cols-2 lg:grid-cols-3">
           {skills.map(({ name, category, icon: Icon, items }, index) => (
-            <article key={name} className={`skill-card professional-panel reveal reveal-delay-${(index % 3) + 1} group rounded-2xl p-6 transition duration-300 hover:-translate-y-1 hover:border-[#c9f36c]/40`}>
+            <article key={name} className={`skill-card professional-panel reveal reveal-delay-${(index % 3) + 1} group rounded-2xl p-6 transition duration-300`}>
               <div className="skill-card-top mb-10 flex items-start justify-between"><div className="flex h-11 w-11 items-center justify-center rounded-xl bg-[#c9f36c] text-[#101412]"><Icon size={20} /></div><ArrowUpRight size={18} className="text-[#91a096] transition group-hover:-translate-y-1 group-hover:translate-x-1 group-hover:text-[#c9f36c]" /></div>
               <p className="mb-2 text-xs font-bold uppercase tracking-[.18em] text-[#91a096]">{category}</p>
               <h2 className="mb-7 text-2xl font-bold">{name}</h2>
@@ -20,6 +28,24 @@ export default function Skills() {
               <div className="skill-card-items" aria-label={`${name} skills`}>{items.map((item) => <span key={item}>{item}</span>)}</div>
             </article>
           ))}
+        </div>
+
+        <div className="learning-panel reveal" aria-label="Currently learning topics">
+          <div className="learning-panel-header">
+            <p className="experience-eyebrow">Currently learning</p>
+            <h3>Building depth beyond the basics</h3>
+          </div>
+          <div className="learning-list">
+            {learningTracks.map(({ name, note }) => (
+              <article key={name} className="learning-item">
+                <span className="learning-item-badge">{name.split(' ')[0].slice(0, 2).toUpperCase()}</span>
+                <div className="learning-item-copy">
+                  <h4>{name}</h4>
+                  <p>{note}</p>
+                </div>
+              </article>
+            ))}
+          </div>
         </div>
       </div>
     </section>
