@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react'
 import SiteHeader from './components/layout/SiteHeader'
-import ScrollMotion from './components/visuals/ScrollMotion'
 import About from './sections/AboutSection'
 import Contact from './sections/ContactSection'
 import Experience from './sections/ExperienceSection'
@@ -44,7 +43,6 @@ function App() {
 
   return (
     <div className="app-shell">
-      <ScrollMotion pageKey={activePage} />
       <SiteHeader
         activePage={activePage}
         menuOpen={menuOpen}

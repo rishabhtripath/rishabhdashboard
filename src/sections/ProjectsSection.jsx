@@ -4,18 +4,57 @@ import { fujifilmSites, projects } from '../data/projects'
 export function FujifilmSites({ onBack }) {
   return (
     <section className="section-grid min-h-screen bg-[#101412] px-6 pb-24 pt-24 text-[#f4f7f2] md:pt-32">
-      <div className="mx-auto max-w-5xl">
+      <div className="mx-auto max-w-6xl">
         <button onClick={onBack} className="mb-12 inline-flex items-center gap-2 text-sm font-bold text-[#91a096] transition hover:text-[#c9f36c]"><ArrowLeft size={16} /> Back to projects</button>
-        <div className="reveal mb-12 border-b border-[#dcffbc]/10 pb-10">
-          <p className="mb-4 text-xs font-bold uppercase tracking-[.28em] text-[#c9f36c]">Fujifilm iLive {fujifilmSites.length} / Website collection</p>
-          <h1 className="max-w-3xl text-4xl font-bold tracking-tight md:text-6xl">Fujifilm <em className="font-serif font-normal text-[#c9f36c]">iLive.</em></h1>
-          <p className="mt-6 max-w-2xl text-base leading-7 text-[#91a096]">This project includes {fujifilmSites.length} live, country-specific Fujifilm iLive websites. Select any country below to open its live URL.</p>
+
+        <div className="fujifilm-hero professional-panel reveal mb-10 overflow-hidden rounded-3xl p-6 md:p-8">
+          <div className="fujifilm-hero-top">
+            <div className="fujifilm-logo-wrap">
+              <img src={projects[0].brandUrl} alt="Fujifilm logo" />
+            </div>
+            <div>
+              <p className="fujifilm-kicker">Global digital rollout</p>
+              <h1 className="fujifilm-title text-4xl font-bold tracking-tight md:text-6xl">Fujifilm <em className="font-serif font-normal text-[#c9f36c]">iLive</em></h1>
+            </div>
+          </div>
+
+          <div className="fujifilm-hero-body">
+            <p className="fujifilm-summary">A consistent, localised digital experience delivered across {fujifilmSites.length} regional Fujifilm websites. The rollout balances regional relevance with global brand consistency for a premium, recruiter-friendly presentation.</p>
+            <div className="fujifilm-metrics">
+              <div>
+                <strong>{fujifilmSites.length}</strong>
+                <span>live markets</span>
+              </div>
+              <div>
+                <strong>16</strong>
+                <span>country sites</span>
+              </div>
+              <div>
+                <strong>1</strong>
+                <span>global system</span>
+              </div>
+            </div>
+          </div>
         </div>
-        <div className="grid gap-3 md:grid-cols-2">
+
+        <div className="mb-5 flex items-center justify-between gap-4">
+          <p className="text-xs font-bold uppercase tracking-[.24em] text-[#c9f36c]">Regional websites</p>
+          <span className="text-xs text-[#91a096]">{fujifilmSites.length} live URLs</span>
+        </div>
+
+        <div className="grid gap-3 md:grid-cols-2 xl:grid-cols-3">
           {fujifilmSites.map((site, index) => (
-            <a key={site.name} href={site.url} target="_blank" rel="noreferrer" className={`professional-panel reveal reveal-delay-${(index % 3) + 1} group flex items-center justify-between rounded-xl p-5 transition hover:-translate-y-1 hover:border-[#c9f36c]/40`}>
-              <span><span className="mr-4 text-xs font-bold text-[#c9f36c]">{String(index + 1).padStart(2, '0')}</span><span className="font-bold">{site.name}</span></span>
-              <ExternalLink size={16} className="text-[#91a096] transition group-hover:text-[#c9f36c]" />
+            <a key={site.url} href={site.url} target="_blank" rel="noreferrer" className={`fujifilm-site-card professional-panel reveal reveal-delay-${(index % 3) + 1} group flex items-center justify-between gap-4 rounded-2xl p-4 transition hover:-translate-y-1 hover:border-[#c9f36c]/40`}>
+              <div className="min-w-0">
+                <div className="mb-2 flex items-center gap-3">
+                  <span className="fujifilm-site-index">{String(index + 1).padStart(2, '0')}</span>
+                  <span className="text-[10px] font-bold uppercase tracking-[.18em] text-[#91a096]">Fujifilm</span>
+                </div>
+                <p className="truncate text-base font-bold text-[#f4f7f2]">{site.name}</p>
+              </div>
+              <span className="inline-flex items-center gap-2 rounded-full border border-[#c9f36c]/30 bg-[#c9f36c]/10 px-2.5 py-1.5 text-[10px] font-bold uppercase tracking-[.14em] text-[#c9f36c]">
+                Open <ExternalLink size={13} />
+              </span>
             </a>
           ))}
         </div>
