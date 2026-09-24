@@ -1,6 +1,6 @@
 import emailjs from "@emailjs/browser";
 import { useState } from "react";
-import { Mail, Phone, Send } from "lucide-react";
+import { Mail, Phone } from "lucide-react";
 import { FaGithub, FaLinkedinIn, FaWhatsapp } from "react-icons/fa";
 
 const EMAIL_SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID || "";

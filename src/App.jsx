@@ -54,7 +54,7 @@ function App() {
         {activePage === 'About' ? (
           <About />
         ) : activePage === 'Experience' ? (
-          <Experience />
+          <Experience onNavigate={handleNavigation} />
         ) : activePage === 'Skills' ? (
           <Skills />
         ) : activePage === 'Contact' ? (
