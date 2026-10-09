@@ -75,7 +75,7 @@ export default function Home({ onNavigate }) {
         </div>
         <figure className="profile-hero reveal reveal-delay-2">
           <div className="profile-hero-frame">
-            <img src="/profile.jpg" alt="Rishabh Tripathi, software engineer" />
+            <img src="/profile.webp" alt="Rishabh Tripathi, software engineer" width="720" height="960" />
             <div className="profile-hero-shine" />
             <span className="profile-hero-label">Rishabh Tripathi</span>
           </div>

@@ -80,7 +80,7 @@ export default function Projects({ onNavigate }) {
         <article className="featured-project professional-panel reveal reveal-delay-1 group overflow-hidden rounded-2xl transition duration-300 hover:border-[#c9f36c]/40">
           <button onClick={() => onNavigate('FujifilmSites')} className="featured-project-visual project-preview-link" aria-label={`Explore all ${fujifilmSites.length} Fujifilm websites`}>
             <div className="project-preview project-preview-fujifilm">
-              <img src={featuredProject.imageUrl} alt="Fujifilm website preview" />
+              <img src={featuredProject.imageUrl} alt="Fujifilm Business Innovation Malaysia homepage preview" loading="lazy" decoding="async" />
               <span className="featured-project-number">{featuredProject.number}</span>
               <span className="project-preview-action">Explore collection <ArrowUpRight size={15} /></span>
             </div>
@@ -93,6 +93,11 @@ export default function Projects({ onNavigate }) {
               </div>
               <h2 className="mb-4 text-3xl font-bold md:text-5xl">{featuredProject.title}</h2>
               <p className="max-w-2xl text-base leading-8 text-[#91a096]">{featuredProject.description} Explore the complete country-wise collection to see every live regional URL.</p>
+              <div className="project-case-study">
+                <p><strong>Role</strong>{featuredProject.role}</p>
+                <p><strong>Challenge</strong>{featuredProject.problem}</p>
+                <p><strong>Approach</strong>{featuredProject.solution}</p>
+              </div>
               <div className="project-tech-stack" aria-label={`${featuredProject.title} technology stack`}>
                 <span className="project-tech-label">Tech stack</span>
                 <div className="project-tech-list">
@@ -112,8 +117,9 @@ export default function Projects({ onNavigate }) {
         <div className="grid gap-5 md:grid-cols-3">
           {secondaryProjects.map((project, index) => (
             <article key={project.title} className={`professional-panel reveal reveal-delay-${index + 1} group overflow-hidden rounded-2xl transition duration-300 hover:-translate-y-1 hover:border-[#c9f36c]/40`}>
-              <a href={project.brandUrl || project.url} target="_blank" rel="noreferrer" aria-label={`View ${project.title}`}>
-                <div className={`project-preview project-preview-${project.accent}`} style={project.imageUrl ? { backgroundImage: `url("${project.imageUrl}")` } : undefined}>
+              <a href={project.url} target="_blank" rel="noreferrer" aria-label={`View ${project.title}`}>
+                <div className={`project-preview project-preview-${project.accent}`}>
+                  <img src={project.imageUrl} alt={`${project.title} homepage screenshot`} loading="lazy" decoding="async" />
                   <span>{project.number}</span>
                 </div>
               </a>
@@ -121,6 +127,11 @@ export default function Projects({ onNavigate }) {
                 <div className="mb-5 flex items-center justify-between gap-3"><span className="text-xs font-bold uppercase tracking-[.16em] text-[#c9f36c]">{project.type}</span><ArrowUpRight size={18} className="text-[#91a096] transition group-hover:-translate-y-1 group-hover:translate-x-1 group-hover:text-[#c9f36c]" /></div>
                 <h2 className="mb-3 text-2xl font-bold">{project.title}</h2>
                 <p className="mb-7 text-sm leading-7 text-[#91a096]">{project.description}</p>
+                <div className="project-case-study">
+                  <p><strong>Role</strong>{project.role}</p>
+                  <p><strong>Challenge</strong>{project.problem}</p>
+                  <p><strong>Approach</strong>{project.solution}</p>
+                </div>
                 <div className="project-tech-stack project-tech-stack-secondary" aria-label={`${project.title} technology stack`}>
                   <span className="project-tech-label">Tech stack</span>
                   <div className="project-tech-list">

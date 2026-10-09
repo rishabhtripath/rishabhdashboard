@@ -12,7 +12,6 @@ import {
   Code2,
   Users,
   Globe,
-  ShieldCheck,
   ArrowRight,
   Clock,
   Award,
@@ -36,7 +35,7 @@ export default function Experience({ onNavigate }) {
   const metricIconMap = [
     <Clock key="0" className="text-[#c9f36c]" size={20} />,
     <Globe key="1" className="text-[#c9f36c]" size={20} />,
-    <ShieldCheck key="2" className="text-[#c9f36c]" size={20} />,
+    <Calendar key="2" className="text-[#c9f36c]" size={20} />,
     <TrendingUp key="3" className="text-[#c9f36c]" size={20} />,
   ]
 
@@ -102,9 +101,6 @@ export default function Experience({ onNavigate }) {
                 <span className="flex h-9 w-9 items-center justify-center rounded-xl border border-[#c9f36c]/25 bg-[#c9f36c]/10">
                   {metricIconMap[idx]}
                 </span>
-                <span className="text-[10px] font-bold uppercase tracking-widest text-[#91a096]">
-                  Verified
-                </span>
               </div>
               <div className="flex items-baseline gap-1.5">
                 <span className="text-3xl font-extrabold tracking-tight text-[#f4f7f2] sm:text-4xl">
@@ -167,8 +163,7 @@ export default function Experience({ onNavigate }) {
               <p className="text-base leading-8 text-[#b2beb5]">
                 Leading frontend initiatives, production deliveries, and enterprise CMS maintenance at{' '}
                 <strong className="text-[#f4f7f2]">Singsys Software Services</strong>.
-                Collaborating directly with international product owners, turning complex client specs into clean,
-                scalable code, and ensuring zero-regression releases across global properties.
+                Collaborating directly with international product owners, turning complex client specifications into maintainable frontend updates, and working with QA to identify and resolve regressions before release.
               </p>
 
               <div className="mt-6 space-y-3.5">
@@ -176,7 +171,7 @@ export default function Experience({ onNavigate }) {
                   <CheckCircle2 size={18} className="mt-1 shrink-0 text-[#c9f36c]" />
                   <p className="text-sm leading-6 text-[#91a096]">
                     <strong className="text-[#f4f7f2]">16 Global Fujifilm Portals: </strong>
-                    Solely responsible for multi-country UI updates, localized publishing workflows, metadata, and cross-browser consistency across APAC regions.
+                    Contributing to multi-country UI updates, localized publishing workflows, metadata, and cross-browser consistency across APAC regions.
                   </p>
                 </div>
                 <div className="flex items-start gap-3">

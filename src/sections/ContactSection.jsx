@@ -20,6 +20,7 @@ export default function Contact() {
   });
 
   const [status, setStatus] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleChange = (e) => {
     setFormData({
@@ -52,6 +53,7 @@ export default function Contact() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (isSubmitting) return;
 
     if (!EMAIL_SERVICE_ID || !EMAIL_TEMPLATE_ID || !EMAIL_PUBLIC_KEY) {
       openMailClient();
@@ -59,6 +61,8 @@ export default function Contact() {
       return;
     }
 
+    setIsSubmitting(true);
+    setStatus("");
     try {
       const templateParams = {
         from_name: formData.name,
@@ -81,7 +85,9 @@ export default function Contact() {
     } catch (error) {
       console.error("EmailJS send failed:", error);
       openMailClient();
-      setStatus("EmailJS failed. Your email app opened with a ready-to-send message.");
+      setStatus("EmailJS could not send your message. Your email app opened as a fallback.");
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -193,14 +199,16 @@ export default function Contact() {
           >
             <div className="grid gap-6 md:grid-cols-2">
               <div>
-                  <label className="mb-2 block text-xs font-bold uppercase tracking-wider text-[#91a096]">
+                  <label htmlFor="contact-name" className="mb-2 block text-xs font-bold uppercase tracking-wider text-[#91a096]">
                   NAME
                 </label>
 
                 <input
                   type="text"
+                  id="contact-name"
                   name="name"
                   required
+                  autoComplete="name"
                   value={formData.name}
                   onChange={handleChange}
                   placeholder="Your name"
@@ -209,14 +217,16 @@ export default function Contact() {
               </div>
 
               <div>
-                <label className="mb-2 block text-xs font-bold uppercase tracking-wider text-[#91a096]">
+                <label htmlFor="contact-email" className="mb-2 block text-xs font-bold uppercase tracking-wider text-[#91a096]">
                   EMAIL
                 </label>
 
                 <input
                   type="email"
+                  id="contact-email"
                   name="email"
                   required
+                  autoComplete="email"
                   value={formData.email}
                   onChange={handleChange}
                   placeholder="you@email.com"
@@ -226,12 +236,13 @@ export default function Contact() {
             </div>
 
             <div className="mt-6">
-              <label className="mb-2 block text-xs font-bold uppercase tracking-wider text-[#91a096]">
+              <label htmlFor="contact-subject" className="mb-2 block text-xs font-bold uppercase tracking-wider text-[#91a096]">
                 SUBJECT
               </label>
 
               <input
                 type="text"
+                id="contact-subject"
                 name="subject"
                 value={formData.subject}
                 onChange={handleChange}
@@ -241,12 +252,13 @@ export default function Contact() {
             </div>
 
             <div className="mt-6">
-              <label className="mb-2 block text-xs font-bold uppercase tracking-wider text-[#91a096]">
+              <label htmlFor="contact-message" className="mb-2 block text-xs font-bold uppercase tracking-wider text-[#91a096]">
                 MESSAGE
               </label>
 
               <textarea
                 rows="6"
+                id="contact-message"
                 name="message"
                 required
                 value={formData.message}
@@ -256,7 +268,14 @@ export default function Contact() {
               />
             </div>
 
-            <div className="mt-8 flex items-center justify-start">
+            <div className="mt-8 flex flex-wrap items-center gap-4">
+              <button
+                type="submit"
+                disabled={isSubmitting}
+                className="inline-flex items-center justify-center rounded-xl bg-[#c9f36c] px-6 py-4 text-sm font-bold text-[#101412] transition hover:-translate-y-0.5 hover:bg-[#d8ff8c] disabled:cursor-wait disabled:opacity-60"
+              >
+                {isSubmitting ? "Sending…" : "Send message"}
+              </button>
               <button
                 type="button"
                 onClick={handleWhatsApp}
@@ -270,7 +289,7 @@ export default function Contact() {
             </div>
 
             {status && (
-              <p className="mt-4 text-sm text-[#c9f36c]" role="status">
+              <p className="mt-4 text-sm text-[#c9f36c]" role="status" aria-live="polite">
                 {status}
               </p>
             )}

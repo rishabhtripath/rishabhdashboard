@@ -12,10 +12,10 @@ export const experienceMetrics = [
     sublabel: 'Live Fujifilm Multi-Region Portals',
   },
   {
-    value: '100%',
-    suffix: '',
-    label: 'Milestone Delivery',
-    sublabel: 'Consistent Sprint & Release Track Record',
+    value: '1',
+    suffix: 'Year',
+    label: 'Promotion Timeline',
+    sublabel: 'Trainee to Software Engineer',
   },
   {
     value: 'Fast-Track',
